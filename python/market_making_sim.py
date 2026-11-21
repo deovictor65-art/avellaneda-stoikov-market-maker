@@ -1,18 +1,18 @@
 """
 Avellaneda-Stoikov & Almgren-Chriss Interactive Simulator
-Simulates market maker inventory paths, PnL distribution, and optimal liquidation curves.
+Simulates market maker inventory paths, PnL distribution, and optimal liquidation curves using standard library.
 """
 
 import math
-import numpy as np
+import random
 
 def simulate_as_market_maker():
+    random.seed(42)
     mid = 100.0
     gamma = 0.1
     sigma = 0.2
     kappa = 1.5
     T = 1.0
-    t = 0.0
     inventory = 0
     cash = 0.0
 
@@ -26,10 +26,10 @@ def simulate_as_market_maker():
         ask = reservation + spread / 2.0
 
         # Random execution
-        if np.random.rand() < 0.3:
+        if random.random() < 0.3:
             inventory += 1
             cash -= bid
-        if np.random.rand() < 0.3:
+        if random.random() < 0.3:
             inventory -= 1
             cash += ask
 
